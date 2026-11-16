@@ -5,7 +5,7 @@ import { GalleryClient } from "./GalleryClient";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
-  title: "Nepal Photo Gallery | Himalayan Footprints",
+  title: "Nepal Photo Gallery | TrekWithAmrit",
   description:
     "Explore stunning photography of Nepal's towering Himalayan peaks, ancient monasteries, trekking trails, diverse wildlife, and cultural festivals.",
 };
@@ -20,7 +20,7 @@ export default async function GalleryPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1600&auto=format&fit=crop')`,
+            backgroundImage: `url('/images/tours/mardi-himal-ridge-view.jpg')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/60 to-transparent" />

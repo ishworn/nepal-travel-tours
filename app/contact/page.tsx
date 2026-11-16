@@ -2,23 +2,24 @@ import React, { Suspense } from "react";
 import { Metadata } from "next";
 import {
   Mail,
-  Phone,
   MapPin,
-  Clock,
   MessageSquare,
-  ShieldCheck,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site-config";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact & Trip Planning Inquiry | Himalayan Footprints",
+  title: "Contact & Trip Planning Inquiry | TrekWithAmrit",
   description:
-    "Get in touch with certified lead mountain guide Ishwor Nepal to plan your customized trek, ask questions, or verify high-altitude route conditions.",
+    "Get in touch with local mountain guide Amrit to plan your customized Nepal trek or tour. Inquiries delivered directly to guideamrit2057@gmail.com and WhatsApp +977 9840781708.",
 };
 
 export default function ContactPage() {
+  const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappFull}?text=${encodeURIComponent(
+    siteConfig.contact.defaultWhatsAppMessage
+  )}`;
+
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-stone-50 min-h-screen">
       {/* Header Banner */}
@@ -26,20 +27,20 @@ export default function ContactPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1600&auto=format&fit=crop')`,
+            backgroundImage: `url('/images/tours/thorong-la-pass-annapurna.jpg')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/60 to-transparent" />
 
         <Container className="relative z-10 text-center max-w-3xl">
-          <span className="text-xs uppercase font-bold tracking-widest text-amber-400 bg-stone-800/80 px-3.5 py-1.5 rounded-full border border-amber-400/30">
+          <span className="text-xs uppercase font-bold tracking-widest text-orange-400 bg-stone-800/80 px-3.5 py-1.5 rounded-full border border-orange-400/30">
             Get In Touch
           </span>
           <h1 className="mt-4 text-3xl sm:text-5xl font-black tracking-tight">
-            Plan Your Nepal Journey
+            Plan Your Nepal Journey with Amrit
           </h1>
           <p className="mt-3 text-stone-300 text-sm sm:text-base leading-relaxed">
-            Have questions about high-altitude acclimatization, season dates, or custom route extensions? Reach out directly to lead guide Ishwor Nepal.
+            Have questions about mountain trails, weather windows, or customized private itineraries? Reach out directly to guide Amrit.
           </p>
         </Container>
       </div>
@@ -58,99 +59,78 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="space-y-4 text-sm text-stone-700">
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-stone-50 border border-stone-200/60">
-                  <Phone className="w-5 h-5 text-emerald-800 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="text-xs uppercase font-bold text-stone-400 block">
-                      Phone &amp; WhatsApp
-                    </span>
-                    <a
-                      href={`tel:${siteConfig.contact.phone.replace(/[\s-]/g, "")}`}
-                      className="font-bold text-stone-900 hover:text-emerald-800 transition-colors"
-                    >
-                      {siteConfig.contact.phone}
-                    </a>
+              <div className="space-y-5">
+                {/* Email Item */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center flex-shrink-0 border border-emerald-100">
+                    <Mail className="w-5 h-5" />
                   </div>
-                </div>
-
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-stone-50 border border-stone-200/60">
-                  <Mail className="w-5 h-5 text-emerald-800 shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs uppercase font-bold text-stone-400 block">
-                      Email Inquiries
-                    </span>
+                    <p className="text-xs font-bold uppercase tracking-wider text-stone-400">
+                      Email Address
+                    </p>
                     <a
                       href={`mailto:${siteConfig.contact.email}`}
-                      className="font-bold text-stone-900 hover:text-emerald-800 transition-colors"
+                      className="text-stone-900 font-semibold hover:text-orange-600 transition-colors text-sm sm:text-base"
                     >
                       {siteConfig.contact.email}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-stone-50 border border-stone-200/60">
-                  <MapPin className="w-5 h-5 text-emerald-800 shrink-0 mt-0.5" />
+                {/* WhatsApp Item */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 text-[#25D366] flex items-center justify-center flex-shrink-0 border border-[#25D366]/20">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
                   <div>
-                    <span className="text-xs uppercase font-bold text-stone-400 block">
-                      Kathmandu Office
-                    </span>
-                    <span className="font-semibold text-stone-800">
-                      {siteConfig.contact.address.street},{" "}
-                      {siteConfig.contact.address.city}, Nepal
-                    </span>
+                    <p className="text-xs font-bold uppercase tracking-wider text-stone-400">
+                      WhatsApp / Mobile
+                    </p>
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#25D366] font-bold hover:underline text-sm sm:text-base"
+                    >
+                      {siteConfig.contact.whatsapp}
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-stone-50 border border-stone-200/60">
-                  <Clock className="w-5 h-5 text-emerald-800 shrink-0 mt-0.5" />
+                {/* Country / Location */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0 border border-orange-100">
+                    <MapPin className="w-5 h-5" />
+                  </div>
                   <div>
-                    <span className="text-xs uppercase font-bold text-stone-400 block">
-                      Office Hours
-                    </span>
-                    <span className="text-stone-700">
-                      {siteConfig.contact.officeHours}
-                    </span>
+                    <p className="text-xs font-bold uppercase tracking-wider text-stone-400">
+                      Country
+                    </p>
+                    <p className="text-stone-900 font-medium text-sm sm:text-base">
+                      Nepal Only (Kathmandu &amp; Pokhara)
+                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Direct WhatsApp Callout */}
-              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200/80 space-y-3">
-                <div className="flex items-center gap-2 text-emerald-950 font-bold text-sm">
-                  <MessageSquare className="w-4 h-4 text-emerald-700" />
-                  <span>Prefer Quick Instant Chat?</span>
-                </div>
-                <p className="text-xs text-emerald-800 leading-relaxed">
-                  Message lead guide Ishwor on WhatsApp for fast answers regarding packing, trail permits, or real-time mountain weather.
-                </p>
+              <div className="pt-2">
                 <a
-                  href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, "")}?text=Namaste%20Ishwor,%20I%20have%20a%20question%20about%20trekking%20in%20Nepal`}
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-colors shadow-xs"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-sm shadow-md transition-all"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>Open WhatsApp Conversation</span>
+                  <span>Chat on WhatsApp Directly</span>
                 </a>
               </div>
             </div>
-
-            {/* Accreditations Trust Box */}
-            <div className="bg-stone-900 text-white rounded-3xl p-6 border border-stone-800 space-y-3">
-              <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
-                <ShieldCheck className="w-5 h-5" />
-                <span>Legally Registered &amp; Insured</span>
-              </div>
-              <p className="text-xs text-stone-400 leading-relaxed">
-                Registered under the Government of Nepal Ministry of Culture, Tourism &amp; Civil Aviation. Member of TAAN, NTB, and NMA.
-              </p>
-            </div>
           </div>
 
-          {/* Right 7 Cols: Interactive Contact Form */}
+          {/* Right 7 Cols: Inquiry Form */}
           <div className="lg:col-span-7">
-            <Suspense fallback={<div className="p-8 text-center text-stone-500">Loading form...</div>}>
+            <Suspense fallback={<div className="p-8 text-center text-stone-500">Loading inquiry form...</div>}>
               <ContactForm />
             </Suspense>
           </div>

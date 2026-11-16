@@ -5,9 +5,9 @@ import { ToursClient } from "./ToursClient";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
-  title: "Tours & Treks in Nepal | Himalayan Footprints",
+  title: "Trekking & Tours in Nepal | TrekWithAmrit",
   description:
-    "Explore our full catalog of high-altitude Himalayan treks, cultural heritage odysseys, and wildlife jungle safaris. Filter by destination, duration, and difficulty.",
+    "Explore our complete catalog of authentic Himalayan treks, cultural heritage tours, and wildlife safaris in Nepal with local guide Amrit.",
 };
 
 export default async function ToursPage() {
@@ -20,7 +20,7 @@ export default async function ToursPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1600&auto=format&fit=crop')`,
+            backgroundImage: `url('/images/hero/hero-himalayas-sunburst.jpg')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/60 to-transparent" />

@@ -1,59 +1,53 @@
 export const siteConfig = {
-  name: "Himalayan Footprints",
-  legalName: "Himalayan Footprints Treks & Expeditions Pvt. Ltd.",
-  tagline: "Explore Nepal. Experience More.",
+  name: "TrekWithAmrit",
+  tagline: "Experience the Himalayas with Authentic Nepali Hospitality",
   description:
-    "Discover the mountains, culture, nature, and hidden gems of Nepal with certified local mountain guides. Unforgettable Himalayan journeys tailored for passionate travelers.",
-  url: "https://himalayanfootprints.com",
+    "Discover the wonders of Nepal with TrekWithAmrit. Unforgettable Himalayan trekking adventures and cultural tours guided by passionate local experts.",
+  url: "https://trekwithamrit.com",
   ogImage: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
 
   contact: {
-    email: "namaste@himalayanfootprints.com",
-    phone: "+977 984-1234567",
-    whatsapp: "+977 984-1234567",
-    address: {
-      street: "Z-Street, Thamel",
-      city: "Kathmandu",
-      postalCode: "44600",
-      country: "Nepal",
-    },
-    officeHours: "Sun - Fri: 8:00 AM - 7:00 PM (Nepal Time, GMT+5:45)",
-  },
-
-  socials: {
-    facebook: "https://facebook.com/himalayanfootprints",
-    instagram: "https://instagram.com/himalayanfootprints",
-    tripadvisor: "https://tripadvisor.com/himalayanfootprints",
-    youtube: "https://youtube.com/@himalayanfootprints",
+    email: "guideamrit2057@gmail.com",
+    whatsapp: "+977 9840781708",
+    whatsappRaw: "9840781708",
+    whatsappFull: "9779840781708",
+    phone: "+977 9840781708",
+    country: "Nepal",
+    location: "Kathmandu & Pokhara, Nepal",
+    defaultWhatsAppMessage:
+      "Hello TrekWithAmrit! I am interested in exploring Nepal. Could you please provide more information about your trekking and tour packages?",
   },
 
   guide: {
-    name: "Ishwor Nepal",
-    role: "Founder & Lead Mountain Guide",
-    licenseNumber: "NMA / TAAN Lic. #8492",
-    experienceYears: 12,
-    summitsCount: "140+ Treks & Expeditions",
-    bio: "Born in the foothills of the Himalayas, Ishwor has spent over 12 years guiding adventurers through Nepal's most revered trails—from the high glacial passes of the Khumbu to the sacred valleys of Mustang. Certified in Wilderness First Aid and high-altitude navigation, Ishwor blends deep cultural heritage with uncompromising mountain safety.",
-    languages: ["English (Fluent)", "Nepali (Native)", "Hindi (Fluent)", "Basic German"],
-    certifications: [
-      "Nepal Mountaineering Association (NMA) Certified Guide",
-      "Trekking Agencies' Association of Nepal (TAAN) Accredited",
-      "Wilderness First Aid & High-Altitude Rescue (WFR)",
-      "Leave No Trace (LNT) Master Educator",
-    ],
+    name: "Amrit",
+    role: "Founder & Local Himalayan Trekking Guide",
+    bio: "At TrekWithAmrit, we believe that travelling is more than visiting destinations. It is about experiencing nature, discovering local cultures, meeting people, and creating unforgettable memories. We offer trekking adventures and cultural tours across Nepal, helping travellers explore the Himalayas and experience the natural beauty and traditions of our country.",
   },
 
-  stats: [
-    { label: "Years of Experience", value: "12+", description: "Guiding travelers through high Himalayan passes" },
-    { label: "Completed Treks", value: "850+", description: "From Everest Base Camp to remote Western Nepal" },
-    { label: "Happy Trekkers", value: "2,400+", description: "From over 45 countries worldwide" },
-    { label: "Client Safety Record", value: "99.8%", description: "Acclimatization and safety-first protocols" },
-  ],
-
-  affiliations: [
-    "Nepal Tourism Board (NTB)",
-    "Trekking Agencies' Association of Nepal (TAAN)",
-    "Kathmandu Environmental Education Project (KEEP)",
-    "Nepal Mountaineering Association (NMA)",
+  whyChooseUs: [
+    {
+      title: "Local Trekking Guide",
+      description:
+        "Led by native Nepali guides with deep Himalayan roots, intimate terrain knowledge, and dedicated safety awareness.",
+      icon: "Compass",
+    },
+    {
+      title: "Personalized Trekking Experiences",
+      description:
+        "Every trek is tailored to your pacing, preferences, and personal goals for a truly meaningful journey.",
+      icon: "HeartHandshake",
+    },
+    {
+      title: "Authentic Nepali Hospitality",
+      description:
+        "Immerse yourself in mountain village communities, warmth of Sherpa and Gurung teahouses, and real Nepali culture.",
+      icon: "Smile",
+    },
+    {
+      title: "Flexible Trip Planning",
+      description:
+        "Customizable dates, adaptable trail itineraries, and transparent communication from initial inquiry to summit views.",
+      icon: "CalendarCheck",
+    },
   ],
 };

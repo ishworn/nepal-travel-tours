@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, MapPin, Star, ArrowRight, Mountain, Users } from "lucide-react";
+import { Clock, MapPin, ArrowRight, Mountain, Users } from "lucide-react";
 import { Tour } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { formatPrice } from "@/lib/utils";
@@ -42,14 +42,12 @@ export function TourCard({ tour, priority = false }: TourCardProps) {
         {/* Bottom image metadata */}
         <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs pointer-events-none">
           <div className="flex items-center gap-1 font-medium drop-shadow-sm">
-            <MapPin className="w-3.5 h-3.5 text-amber-400" />
+            <MapPin className="w-3.5 h-3.5 text-orange-400" />
             <span className="truncate max-w-[180px]">{tour.location}</span>
           </div>
 
-          <div className="flex items-center gap-1 bg-stone-900/80 backdrop-blur-xs px-2 py-0.5 rounded-md font-bold text-amber-400">
-            <Star className="w-3.5 h-3.5 fill-amber-400" />
-            <span>{tour.rating.toFixed(1)}</span>
-            <span className="text-stone-300 text-[10px]">({tour.reviewsCount})</span>
+          <div className="flex items-center gap-1 bg-emerald-950/80 backdrop-blur-xs px-2.5 py-0.5 rounded-md font-bold text-white text-[11px]">
+            <span>{tour.duration}</span>
           </div>
         </div>
       </div>
@@ -92,24 +90,18 @@ export function TourCard({ tour, priority = false }: TourCardProps) {
         <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between">
           <div className="flex flex-col">
             <span className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">
-              From
+              Price
             </span>
             <div className="flex items-baseline gap-1.5">
-              <span className="text-xl sm:text-2xl font-black text-stone-950">
-                {formatPrice(tour.discountPrice || tour.price)}
+              <span className="text-sm sm:text-base font-black text-emerald-950">
+                {tour.priceDisplay || "Contact for Price"}
               </span>
-              {tour.discountPrice && (
-                <span className="text-xs text-stone-500 line-through">
-                  {formatPrice(tour.price)}
-                </span>
-              )}
-              <span className="text-[11px] text-stone-500 font-normal">/ person</span>
             </div>
           </div>
 
           <Link
             href={`/tours/${tour.slug}`}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-stone-100 group-hover:bg-emerald-800 text-stone-800 group-hover:text-white text-xs font-bold transition-all duration-200"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold transition-all duration-200"
           >
             <span>View Details</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />

@@ -1,8 +1,7 @@
 import { tours } from "@/data/tours";
 import { destinations } from "@/data/destinations";
-import { testimonials } from "@/data/testimonials";
 import { galleryItems } from "@/data/gallery";
-import { Tour, Destination, Testimonial, GalleryItem, ContactFormData } from "@/types";
+import { Tour, Destination, GalleryItem } from "@/types";
 
 /**
  * Service abstraction layer.
@@ -16,7 +15,15 @@ export async function getTours(): Promise<Tour[]> {
 }
 
 export async function getFeaturedTours(): Promise<Tour[]> {
-  return tours.filter((t) => t.featured);
+  return tours.filter((t) => t.category === "trekking");
+}
+
+export async function getFeaturedTrekking(): Promise<Tour[]> {
+  return tours.filter((t) => t.category === "trekking");
+}
+
+export async function getNepalTours(): Promise<Tour[]> {
+  return tours.filter((t) => t.category === "tour");
 }
 
 export async function getTourBySlug(slug: string): Promise<Tour | undefined> {
@@ -74,10 +81,6 @@ export async function getDestinationBySlug(slug: string): Promise<Destination | 
   return destinations.find((d) => d.slug === slug);
 }
 
-export async function getTestimonials(): Promise<Testimonial[]> {
-  return testimonials;
-}
-
 export async function getGalleryItems(category?: string): Promise<GalleryItem[]> {
   if (!category || category === "All") {
     return galleryItems;
@@ -85,13 +88,26 @@ export async function getGalleryItems(category?: string): Promise<GalleryItem[]>
   return galleryItems.filter((item) => item.category === category);
 }
 
-export async function submitContactInquiry(data: ContactFormData): Promise<{ success: boolean; message: string }> {
-  // Phase 1: Local simulation with simulated delay
-  // Future Phase: Connect to Next.js API route, database, or n8n webhook
-  await new Promise((resolve) => setTimeout(resolve, 800));
-  console.log("Tour inquiry submitted successfully:", data);
-  return {
-    success: true,
-    message: "Thank you for reaching out! Our lead guide Ishwor will review your journey details and reply within 24 hours.",
-  };
+export async function submitContactInquiry(data: Record<string, unknown>): Promise<{ success: boolean; message: string }> {
+  try {
+    const res = await fetch("/api/inquire", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (!res.ok) {
+      throw new Error(result.error || "Failed to submit inquiry. Please try again.");
+    }
+    return {
+      success: true,
+      message: result.message || "Thank you for reaching out! Amrit will reply to you within 24 hours.",
+    };
+  } catch (error: unknown) {
+    const errMsg = error instanceof Error ? error.message : "There was a problem submitting your inquiry. Please try WhatsApp directly.";
+    return {
+      success: false,
+      message: errMsg,
+    };
+  }
 }

@@ -38,7 +38,7 @@ export async function generateMetadata({
     title: `${tour.title} (${tour.duration})`,
     description: tour.shortDescription,
     openGraph: {
-      title: `${tour.title} | Himalayan Footprints`,
+      title: `${tour.title} | TrekWithAmrit`,
       description: tour.shortDescription,
       images: [{ url: tour.heroImage }],
     },

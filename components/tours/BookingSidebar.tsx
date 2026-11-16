@@ -9,7 +9,6 @@ import {
 import { Tour } from "@/types";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
-import { formatPrice } from "@/lib/utils";
 import { siteConfig } from "@/lib/site-config";
 import { submitContactInquiry } from "@/services/tour-service";
 
@@ -55,21 +54,13 @@ export function BookingSidebar({ tour }: BookingSidebarProps) {
           Trip Price
         </span>
         <div className="flex items-baseline gap-2 mt-1">
-          <span className="text-3xl sm:text-4xl font-black text-stone-950">
-            {formatPrice(tour.discountPrice || tour.price)}
+          <span className="text-2xl sm:text-3xl font-black text-emerald-950">
+            {tour.priceDisplay || "Contact for Price"}
           </span>
-          {tour.discountPrice && (
-            <span className="text-base text-stone-400 line-through font-medium">
-              {formatPrice(tour.price)}
-            </span>
-          )}
-          <span className="text-xs text-stone-500 font-medium">/ person</span>
         </div>
-        {tour.discountPrice && (
-          <p className="mt-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg inline-block">
-            Special Offer: Save {formatPrice(tour.price - tour.discountPrice)}
-          </p>
-        )}
+        <p className="mt-2 text-xs text-stone-500">
+          Personalized quote based on group size and travel dates.
+        </p>
       </div>
 
       {/* Quick Specs */}
@@ -87,8 +78,8 @@ export function BookingSidebar({ tour }: BookingSidebarProps) {
           <span className="font-bold text-stone-900">{tour.groupSize}</span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-stone-500">Best Months:</span>
-          <span className="font-bold text-stone-900">{tour.bestSeason[0]?.split(" ")[0]}</span>
+          <span className="text-stone-500">Best Season:</span>
+          <span className="font-bold text-stone-900">{tour.bestSeason?.[0]}</span>
         </div>
       </div>
 
@@ -97,15 +88,17 @@ export function BookingSidebar({ tour }: BookingSidebarProps) {
         <Button
           variant="amber"
           size="lg"
-          className="w-full justify-center text-sm shadow-md"
+          className="w-full justify-center text-sm shadow-md bg-orange-600 hover:bg-orange-500 text-white"
           onClick={() => setModalOpen(true)}
           icon={<Sparkles className="w-4 h-4" />}
         >
-          Enquire About This Tour
+          Inquire Now
         </Button>
 
         <a
-          href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, "")}?text=Hi%20Ishwor,%20I%20am%20interested%20in%20the%20${encodeURIComponent(tour.title)}`}
+          href={`https://wa.me/${siteConfig.contact.whatsappFull}?text=${encodeURIComponent(
+            `Hello TrekWithAmrit! I am interested in the ${tour.title}. Could you please share more details and pricing?`
+          )}`}
           target="_blank"
           rel="noopener noreferrer"
           className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-stone-300 text-stone-800 hover:bg-stone-50 text-xs font-bold transition-colors"

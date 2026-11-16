@@ -3,24 +3,18 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  Phone,
-  Mountain,
-  ChevronRight,
-} from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Menu, X, Compass, MessageCircle } from "lucide-react";
+import { Logo } from "@/components/layout/Logo";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
-  { name: "Tours", href: "/tours" },
+  { name: "Trekking in Nepal", href: "/#trekking" },
+  { name: "Tours in Nepal", href: "/#tours" },
   { name: "Destinations", href: "/#destinations" },
-  { name: "About", href: "/about" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Contact", href: "/contact" },
+  { name: "About Us", href: "/#about" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
@@ -30,198 +24,189 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen]);
+
+  const handleNavClick = (href: string) => {
+    setMobileMenuOpen(false);
+    if (href.startsWith("/#") && pathname === "/") {
+      const elementId = href.replace("/#", "");
+      const elem = document.getElementById(elementId);
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const isLightNav = !isScrolled && pathname === "/";
+
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
         isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-stone-200/60 py-3"
-          : "bg-gradient-to-b from-stone-950/80 via-stone-950/40 to-transparent py-5"
+          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200/80 py-3"
+          : "bg-gradient-to-b from-stone-950/80 via-stone-950/40 to-transparent py-4 sm:py-5"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo */}
-          <Link
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2.5 group focus:outline-none"
-          >
-            <div
-              className={cn(
-                "w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 shadow-md",
-                isScrolled
-                  ? "bg-emerald-800 text-white"
-                  : "bg-emerald-600 text-white backdrop-blur-sm"
-              )}
-            >
-              <Mountain className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <span
-                className={cn(
-                  "font-black tracking-tight text-lg sm:text-xl leading-none transition-colors",
-                  isScrolled ? "text-stone-900" : "text-white drop-shadow-sm"
-                )}
-              >
-                Himalayan
-                <span className="text-amber-500 ml-1">Footprints</span>
-              </span>
-              <span
-                className={cn(
-                  "text-[10px] tracking-wider uppercase font-semibold mt-0.5 transition-colors",
-                  isScrolled ? "text-stone-500" : "text-stone-300"
-                )}
-              >
-                Nepal Trekking & Tours
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {NAV_LINKS.map((link) => {
-              const isActive =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(link.href) && !link.href.includes("#");
-
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={cn(
-                    "px-3.5 py-2 text-sm font-semibold rounded-lg transition-all duration-200",
-                    isScrolled
-                      ? isActive
-                        ? "text-emerald-800 bg-emerald-50"
-                        : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
-                      : isActive
-                      ? "text-amber-400 bg-white/10 backdrop-blur-xs"
-                      : "text-stone-200 hover:text-white hover:bg-white/10"
-                  )}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Desktop CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
-            <a
-              href={`tel:${siteConfig.contact.phone.replace(/[\s-]/g, "")}`}
-              className={cn(
-                "flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg transition-colors",
-                isScrolled
-                  ? "text-stone-600 hover:text-stone-900"
-                  : "text-stone-200 hover:text-white"
-              )}
-            >
-              <Phone className="w-3.5 h-3.5 text-amber-500" />
-              <span>{siteConfig.contact.phone}</span>
-            </a>
-
-            <Button
-              href="/contact"
-              variant={isScrolled ? "primary" : "amber"}
-              size="sm"
-              icon={<ChevronRight className="w-3.5 h-3.5" />}
-            >
-              Plan Your Trip
-            </Button>
+          {/* Left: Brand Logo & Name */}
+          <div className="flex-shrink-0">
+            <Logo lightOnly={isLightNav} />
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Center / Right: Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={(e) => {
+                  if (link.href.startsWith("/#") && pathname === "/") {
+                    e.preventDefault();
+                    handleNavClick(link.href);
+                  }
+                }}
+                className={cn(
+                  "px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200",
+                  isLightNav
+                    ? "text-stone-100 hover:text-white hover:bg-white/10"
+                    : "text-stone-700 hover:text-emerald-800 hover:bg-stone-100/80"
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right CTA Button */}
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/#contact"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  handleNavClick("/#contact");
+                }
+              }}
+              className="inline-flex items-center justify-center rounded-xl bg-orange-600 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-orange-600/30 transition-all duration-200 hover:bg-orange-500 hover:shadow-orange-600/50 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Compass className="mr-2 h-4 w-4" />
+              Plan Your Trip
+            </Link>
+          </div>
+
+          {/* Mobile Hamburger Button */}
           <div className="flex lg:hidden items-center gap-2">
-            <Button
-              href="/contact"
-              variant="amber"
-              size="sm"
-              className="text-xs px-3 py-1.5"
-              onClick={() => setMobileMenuOpen(false)}
+            <Link
+              href="/#contact"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  handleNavClick("/#contact");
+                }
+              }}
+              className="rounded-lg bg-orange-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-orange-500"
             >
               Plan Trip
-            </Button>
-
+            </Link>
             <button
-              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={cn(
-                "p-2 rounded-xl transition-colors focus:outline-none",
-                isScrolled
-                  ? "text-stone-700 hover:bg-stone-100"
-                  : "text-white hover:bg-white/10"
+                "p-2 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500",
+                isLightNav
+                  ? "text-white hover:bg-white/15"
+                  : "text-stone-800 hover:bg-stone-100"
               )}
-              aria-label="Toggle Menu"
+              aria-label={mobileMenuOpen ? "Close main menu" : "Open main menu"}
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="h-6 w-6" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="h-6 w-6" />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-full bg-white/95 backdrop-blur-xl border-b border-stone-200 shadow-2xl p-6 transition-all animate-in fade-in slide-in-from-top-4">
-          <div className="flex flex-col space-y-3">
-            {NAV_LINKS.map((link) => {
-              const isActive =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(link.href) && !link.href.includes("#");
+        <div className="fixed inset-0 top-[60px] z-50 bg-stone-900/40 backdrop-blur-sm lg:hidden animate-fade-in">
+          <div className="flex flex-col h-full w-full max-w-sm bg-white shadow-2xl p-6 overflow-y-auto">
+            {/* Header info */}
+            <div className="flex items-center justify-between pb-5 border-b border-stone-200">
+              <Logo />
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-1.5 rounded-lg text-stone-500 hover:bg-stone-100"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
 
-              return (
+            {/* Navigation links */}
+            <nav className="flex flex-col gap-1 py-4">
+              {NAV_LINKS.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={cn(
-                    "px-4 py-3 rounded-xl text-base font-semibold flex items-center justify-between transition-colors",
-                    isActive
-                      ? "bg-emerald-50 text-emerald-800"
-                      : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
-                  )}
+                  onClick={(e) => {
+                    if (link.href.startsWith("/#") && pathname === "/") {
+                      e.preventDefault();
+                    }
+                    handleNavClick(link.href);
+                  }}
+                  className="px-4 py-3 rounded-xl text-base font-semibold text-stone-800 hover:bg-emerald-50 hover:text-emerald-900 transition-colors"
                 >
-                  <span>{link.name}</span>
-                  <ChevronRight className="w-4 h-4 text-stone-400" />
+                  {link.name}
                 </Link>
-              );
-            })}
+              ))}
+            </nav>
 
-            <div className="pt-4 mt-2 border-t border-stone-100 flex flex-col gap-3">
+            {/* Action buttons inside drawer */}
+            <div className="mt-auto pt-6 border-t border-stone-200 space-y-3">
+              <Link
+                href="/#contact"
+                onClick={(e) => {
+                  if (pathname === "/") {
+                    e.preventDefault();
+                  }
+                  handleNavClick("/#contact");
+                }}
+                className="w-full flex items-center justify-center rounded-xl bg-orange-600 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-orange-500"
+              >
+                <Compass className="mr-2 h-4 w-4" />
+                Plan Your Trip
+              </Link>
+
               <a
-                href={`tel:${siteConfig.contact.phone.replace(/[\s-]/g, "")}`}
-                className="flex items-center gap-2 text-sm text-stone-600 px-4 py-2 bg-stone-50 rounded-lg"
+                href={`https://wa.me/${siteConfig.contact.whatsappFull}?text=${encodeURIComponent(
+                  siteConfig.contact.defaultWhatsAppMessage
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-emerald-600"
               >
-                <Phone className="w-4 h-4 text-emerald-700" />
-                <span>Call/WhatsApp: {siteConfig.contact.phone}</span>
+                <MessageCircle className="mr-2 h-4 w-4" />
+                WhatsApp: {siteConfig.contact.whatsapp}
               </a>
-
-              <Button
-                href="/contact"
-                variant="primary"
-                size="md"
-                className="w-full justify-center"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Plan Your Himalayan Trip
-              </Button>
             </div>
           </div>
         </div>

@@ -26,9 +26,11 @@ export interface Tour {
   durationDays: number;
   difficulty: DifficultyLevel;
   price: number;
+  priceDisplay?: string;
   discountPrice?: number;
   groupSize: string;
   maxAltitude?: string;
+  category?: "trekking" | "tour";
   shortDescription: string;
   description: string;
   heroImage: string;
@@ -40,8 +42,8 @@ export interface Tour {
   bestSeason: string[];
   fitnessLevel: string;
   featured?: boolean;
-  rating: number;
-  reviewsCount: number;
+  rating?: number;
+  reviewsCount?: number;
   faq: TourFAQ[];
 }
 
@@ -56,6 +58,27 @@ export interface Destination {
   tourCount: number;
   popularAttractions: string[];
   bestTimeToVisit: string;
+}
+
+export interface InquiryFormData {
+  fullName: string;
+  email: string;
+  phone?: string;
+  country?: string;
+  packagePreference?: string;
+  travellers?: string;
+  travelDate?: string;
+  message?: string;
+}
+
+export interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  tourInterestedIn?: string;
+  preferredDate?: string;
+  travelersCount?: number;
+  message: string;
 }
 
 export interface Testimonial {
@@ -85,14 +108,4 @@ export interface GalleryItem {
   imageUrl: string;
   location: string;
   alt: string;
-}
-
-export interface ContactFormData {
-  name: string;
-  email: string;
-  phone: string;
-  tourInterestedIn?: string;
-  preferredDate?: string;
-  travelersCount?: number;
-  message: string;
 }

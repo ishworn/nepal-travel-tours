@@ -1,50 +1,41 @@
 import React from "react";
-import { getFeaturedTours, getDestinations, getTestimonials } from "@/services/tour-service";
+import { getTours, getDestinations } from "@/services/tour-service";
 import { Hero } from "@/components/home/Hero";
-import { QuickSearch } from "@/components/home/QuickSearch";
-import { FeaturedTours } from "@/components/home/FeaturedTours";
-import { PopularDestinations } from "@/components/home/PopularDestinations";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
-import { AboutPreview } from "@/components/home/AboutPreview";
-import { TravelHighlights } from "@/components/home/TravelHighlights";
-import { Testimonials } from "@/components/home/Testimonials";
-import { CTA } from "@/components/home/CTA";
+import { FeaturedTrekking } from "@/components/home/FeaturedTrekking";
+import { PopularDestinations } from "@/components/home/PopularDestinations";
+import { NepalTours } from "@/components/home/NepalTours";
+import { AboutSection } from "@/components/home/AboutSection";
+import { InquirySection } from "@/components/home/InquirySection";
 
 export default async function HomePage() {
-  const [featuredTours, destinations, testimonials] = await Promise.all([
-    getFeaturedTours(),
+  const [tours, destinations] = await Promise.all([
+    getTours(),
     getDestinations(),
-    getTestimonials(),
   ]);
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* 1. Hero Section */}
+      {/* 1. Large Himalayan Hero Section */}
       <Hero />
 
-      {/* 2. Floating Quick Search */}
-      <QuickSearch />
-
-      {/* 3. Featured Tours */}
-      <FeaturedTours tours={featuredTours} />
-
-      {/* 4. Popular Destinations */}
-      <PopularDestinations destinations={destinations} />
-
-      {/* 5. Why Choose Us / Safety */}
+      {/* 2. Why Choose TrekWithAmrit */}
       <WhyChooseUs />
 
-      {/* 6. Guide / About Preview */}
-      <AboutPreview />
+      {/* 3. Featured Trekking Packages (MOST IMPORTANT) */}
+      <FeaturedTrekking tours={tours} />
 
-      {/* 7. Travel Highlights & Signature Experiences */}
-      <TravelHighlights />
+      {/* 4. Popular Trekking Destinations in Nepal */}
+      <PopularDestinations destinations={destinations} />
 
-      {/* 8. Customer Testimonials */}
-      <Testimonials testimonials={testimonials} />
+      {/* 5. Tours in Nepal */}
+      <NepalTours tours={tours} />
 
-      {/* 9. High-Impact Call To Action */}
-      <CTA />
+      {/* 6. About TrekWithAmrit */}
+      <AboutSection />
+
+      {/* 7. Contact and Trip Inquiry Section (Form ends here, NO footer) */}
+      <InquirySection />
     </div>
   );
 }

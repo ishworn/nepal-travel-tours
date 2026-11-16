@@ -1,79 +1,78 @@
 import React from "react";
-import { ShieldCheck, Mountain, HeartHandshake, Leaf, Award, Clock } from "lucide-react";
-import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Compass, HeartHandshake, Smile, CalendarCheck } from "lucide-react";
 
-const PILLARS = [
+const BENEFITS = [
   {
-    icon: <Mountain className="w-6 h-6 text-emerald-800" />,
-    title: "100% Local Sherpa & Guide Expertise",
+    icon: Compass,
+    title: "Local Trekking Guide",
     description:
-      "We were born and raised in these Himalayan foothills. Our guides possess intimate trail knowledge, weather instincts, and deep ties with local teahouse families.",
+      "Guided directly by native Nepali guides who know the mountain trails, local culture, altitude pacing, and hidden spots intimately.",
   },
   {
-    icon: <ShieldCheck className="w-6 h-6 text-emerald-800" />,
-    title: "Rigorous Safety & Acclimatization",
+    icon: HeartHandshake,
+    title: "Personalized Trekking Experiences",
     description:
-      "Safety is never compromised. We conduct twice-daily pulse oximeter oxygen checks, enforce conservative acclimatization schedules, and carry wilderness first aid kits on every high-altitude route.",
+      "Your journey is tailored to your pace, preferences, and personal goals—whether trekking solo, with family, or in a private group.",
   },
   {
-    icon: <HeartHandshake className="w-6 h-6 text-emerald-800" />,
-    title: "Direct Pricing, Zero Middlemen",
+    icon: Smile,
+    title: "Authentic Nepali Hospitality",
     description:
-      "When you travel with us, you book directly with the local operational guide team in Nepal. Fair wages for porters, transparent pricing, and zero markups from international travel agencies.",
+      "Experience genuine warmth in traditional Sherpa and Gurung teahouses, sharing stories by the dining fire and savoring homecooked meals.",
   },
   {
-    icon: <Leaf className="w-6 h-6 text-emerald-800" />,
-    title: "Responsible Eco-Trekking",
+    icon: CalendarCheck,
+    title: "Flexible Trip Planning",
     description:
-      "We practice strict 'Leave No Trace' mountain ethics. We carry out all non-biodegradable waste, support community-owned lodges, and contribute to local village schools.",
-  },
-  {
-    icon: <Award className="w-6 h-6 text-emerald-800" />,
-    title: "Licensed & Government Accredited",
-    description:
-      "Officially recognized by the Nepal Tourism Board (NTB), Trekking Agencies' Association of Nepal (TAAN), and Nepal Mountaineering Association (NMA).",
-  },
-  {
-    icon: <Clock className="w-6 h-6 text-emerald-800" />,
-    title: "Flexible Custom Itineraries",
-    description:
-      "No rigid group itineraries. We customize trekking duration, rest days, side excursions, and comfort levels to match your exact fitness, timeline, and travel style.",
+      "Adaptable dates, custom rest days, and direct communication with your guide from initial inquiry all the way through your adventure.",
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="py-20 lg:py-28 bg-stone-50">
-      <Container>
-        <SectionHeading
-          tag="Why Himalayan Footprints"
-          title="Why Travel in Nepal With Us?"
-          subtitle="More than just guides—we are your mountain mentors, cultural storytellers, and dedicated companions on every step of your Himalayan journey."
-          align="center"
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {PILLARS.map((pillar, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-3xl p-7 border border-stone-200/80 shadow-xs hover:shadow-lg transition-all duration-300 hover:border-emerald-700/30 group"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5 group-hover:bg-emerald-800 group-hover:text-white transition-colors duration-300 shadow-xs">
-                {pillar.icon}
-              </div>
-
-              <h3 className="text-lg sm:text-xl font-bold text-stone-900 mb-2.5 leading-snug">
-                {pillar.title}
-              </h3>
-
-              <p className="text-sm text-stone-600 leading-relaxed">
-                {pillar.description}
-              </p>
-            </div>
-          ))}
+    <section className="py-20 bg-stone-50 border-b border-stone-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-block text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1 rounded-full ring-1 ring-orange-200 mb-3">
+            Your Himalayan Journey
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+            Why Travel With <span className="text-emerald-800">TrekWithAmrit</span>?
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-stone-600">
+            We focus on authentic, safe, and personalized adventures across Nepal without generic mass tours or third-party agencies.
+          </p>
         </div>
-      </Container>
+
+        {/* 4 Benefits Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {BENEFITS.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="group relative flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-stone-200/80 transition-all duration-300 hover:shadow-xl hover:ring-emerald-700/30 hover:-translate-y-1"
+              >
+                {/* Icon Container */}
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-emerald-800 ring-1 ring-emerald-200/60 transition-colors duration-300 group-hover:bg-emerald-800 group-hover:text-white">
+                  <Icon className="h-7 w-7" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-lg font-bold text-stone-900 mb-2 group-hover:text-emerald-900 transition-colors">
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-stone-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }

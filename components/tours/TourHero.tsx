@@ -1,6 +1,6 @@
 import React from "react";
 import NextLink from "next/link";
-import { Clock, MapPin, Mountain, Star, Users, ChevronRight } from "lucide-react";
+import { Clock, MapPin, Mountain, Users, ChevronRight } from "lucide-react";
 import { Tour } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
@@ -41,17 +41,16 @@ export function TourHero({ tour }: TourHeroProps) {
         {/* Top Badges Row */}
         <div className="flex flex-wrap items-center gap-2.5 mb-4">
           <Badge difficulty={tour.difficulty} className="text-xs px-3 py-1 font-bold">
-            {tour.difficulty} Trek
+            {tour.difficulty}
           </Badge>
 
-          <div className="flex items-center gap-1.5 bg-stone-900/90 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-semibold text-amber-400 border border-stone-700/60">
-            <Star className="w-3.5 h-3.5 fill-amber-400" />
-            <span>{tour.rating.toFixed(2)}</span>
-            <span className="text-stone-400">({tour.reviewsCount} reviews)</span>
+          <div className="flex items-center gap-1.5 bg-stone-900/90 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-semibold text-emerald-400 border border-stone-700/60">
+            <Clock className="w-3.5 h-3.5 text-orange-400" />
+            <span>{tour.duration}</span>
           </div>
 
           <div className="flex items-center gap-1.5 bg-stone-900/90 backdrop-blur-xs px-3 py-1 rounded-full text-xs text-stone-300 border border-stone-700/60">
-            <MapPin className="w-3.5 h-3.5 text-amber-400" />
+            <MapPin className="w-3.5 h-3.5 text-orange-400" />
             <span>{tour.location}</span>
           </div>
         </div>
