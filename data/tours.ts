@@ -361,10 +361,10 @@ export const tours: Tour[] = [
     bestSeason: ["September - December", "March - May"],
     featured: true,
     category: "trekking",
-    heroImage: "/images/destinations/ghorepanipunhill.jpg",
+    heroImage: "/images/destinations/ghorepani.jpg",
     gallery: [
-      "/images/destinations/ghorepanipunhill.jpg",
-      "/images/destinations/ghorepanipunhill2.jpg",
+      "/images/destinations/ghorepani.jpg",
+      "/images/destinations/ghorepani.jpg",
     ],
     shortDescription:
       "A scenic trek through traditional Gurung villages and rhododendron groves, culminating in the iconic sunrise over Dhaulagiri and the Annapurna range from Poon Hill.",
