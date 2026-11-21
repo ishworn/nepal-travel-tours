@@ -9,7 +9,7 @@ export const destinations: Destination[] = [
     tagline: "Roof of the World & Sherpa Heartland",
     description:
       "Home to Mount Everest (8,848.86m), high glacial passes, legendary Sherpa villages like Namche Bazaar, and sacred mountain monasteries.",
-    image: "/images/hero/hero-himalayas-sunburst.jpg",
+    image: "/images/destinations/everest.jpeg",
     tourCount: 3,
     popularAttractions: [
       "Everest Base Camp & Khumbu Glacier",
@@ -45,7 +45,7 @@ export const destinations: Destination[] = [
     tagline: "The Valley of Glaciers & Tamang Heritage",
     description:
       "Nestled just north of Kathmandu, Langtang offers tranquil alpine yak pastures, dramatic glaciated valleys, and authentic Tamang cultural heritage.",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/destinations/langtang valley treak.jpeg",
     tourCount: 1,
     popularAttractions: [
       "Kyanjin Gompa & Local Yak Cheese Factory",
@@ -108,6 +108,42 @@ export const destinations: Destination[] = [
       "Shey Phoksundo National Park Wildlife",
     ],
     bestTimeToVisit: "May – October",
+  },
+  {
+    id: "dest-7",
+    slug: "tilicho-lake",
+    name: "Tilicho Lake",
+    region: "Manang District, Annapurna Conservation Area",
+    tagline: "Glacial Wonder at 4,919m in the High Himalayas",
+    description:
+      "Perched dramatically at 4,919 meters (16,138 ft) in Manang, Tilicho Lake is one of the highest alpine lakes on Earth. It features striking turquoise glacial meltwaters reflecting towering ice walls and the rugged Annapurna mountain range.",
+    image: "/images/destinations/tilicho.jpg",
+    tourCount: 1,
+    popularAttractions: [
+      "Turquoise glacial waters at 4,919m elevation",
+      "Tilicho Base Camp & High Scree Trails",
+      "Panoramic vistas of Tilicho Peak & Annapurna range",
+      "Thorong La Pass (5,416m) side-trek option",
+    ],
+    bestTimeToVisit: "March – May & September – November",
+  },
+  {
+    id: "dest-8",
+    slug: "rara-lake",
+    name: "Rara Lake",
+    region: "Mugu & Jumla Districts, Karnali Province",
+    tagline: "The Queen of Freshwater Lakes in Untamed Wilderness",
+    description:
+      "The largest freshwater lake in Nepal situated at 2,990 meters (9,810 ft) in Rara National Park. Pristine deep-blue water changes color with the mountain sky, framed by coniferous alpine forests and snowy Himalayan ridges.",
+    image: "/images/destinations/rara.jpg",
+    tourCount: 1,
+    popularAttractions: [
+      "Deep blue lake waters spanning over 10.8 sq km",
+      "Rara National Park pine, spruce & juniper forests",
+      "Scenic boating & tranquil lakeside wilderness trails",
+      "Murma Top panoramic Himalayan viewpoint",
+    ],
+    bestTimeToVisit: "April – May & September – October",
   },
 ];
 

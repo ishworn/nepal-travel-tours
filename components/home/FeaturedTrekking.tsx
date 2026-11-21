@@ -82,7 +82,7 @@ export function FeaturedTrekking({ tours }: FeaturedTrekkingProps) {
                 <div className="relative h-56 sm:h-60 w-full overflow-hidden bg-stone-100">
                   <Image
                     src={tour.heroImage}
-                    alt={tour.title}
+                    alt={`${tour.title} - ${tour.location}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-108"

@@ -45,7 +45,7 @@ export function TourDetailModal({ tour, isOpen, onClose, onInquire }: TourDetail
         <div className="relative h-64 sm:h-80 w-full flex-shrink-0">
           <Image
             src={tour.heroImage}
-            alt={tour.title}
+            alt={`${tour.title} - ${tour.location}`}
             fill
             sizes="(max-width: 1024px) 100vw, 896px"
             className="object-cover"

@@ -18,7 +18,7 @@ export function TourCard({ tour, priority = false }: TourCardProps) {
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
         <Image
           src={tour.heroImage}
-          alt={tour.title}
+          alt={`${tour.title} - ${tour.location}`}
           fill
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

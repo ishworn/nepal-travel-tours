@@ -40,7 +40,7 @@ export function PopularDestinations({ destinations }: PopularDestinationsProps) 
               <div className="relative h-64 sm:h-72 w-full overflow-hidden">
                 <Image
                   src={dest.image}
-                  alt={dest.name}
+                  alt={`${dest.name} - ${dest.region}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"

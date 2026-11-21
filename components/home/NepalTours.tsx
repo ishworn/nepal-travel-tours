@@ -64,7 +64,7 @@ export function NepalTours({ tours }: NepalToursProps) {
                 <div className="relative h-48 w-full overflow-hidden bg-stone-200">
                   <Image
                     src={tour.heroImage}
-                    alt={tour.title}
+                    alt={`${tour.title} - ${tour.location}`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -15,6 +15,8 @@ const ALL_PACKAGES = [
   "Ghorepani Poon Hill Trek – 4–5 Days",
   "Gokyo Lakes Trek – 12–14 Days",
   "Upper Mustang Trek – 10–14 Days",
+  "Tilicho Lake Trek – 9 Days",
+  "Rara Lake Trek – 6 Days",
   // 6 Tour Packages
   "Kathmandu Valley Cultural Tour",
   "Kathmandu – Pokhara Tour",

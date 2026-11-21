@@ -15,6 +15,11 @@ export interface TourFAQ {
   answer: string;
 }
 
+export interface CompetitorPrice {
+  name: string;
+  price: number;
+}
+
 export interface Tour {
   id: string;
   slug: string;
@@ -27,6 +32,9 @@ export interface Tour {
   difficulty: DifficultyLevel;
   price: number;
   priceDisplay?: string;
+  marketPrice?: number;
+  savingsAmount?: number;
+  competitorPrices?: CompetitorPrice[];
   discountPrice?: number;
   groupSize: string;
   maxAltitude?: string;
